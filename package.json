@@ -25,7 +25,8 @@
     "start:client": "react-scripts start",
     "start:server": "nodemon -r esm ./src/server/index.js",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test:server": "jest --verbose ./src/server",
+    "test:client": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -44,6 +45,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.8.4",
+    "babel-jest": "^24.9.0",
+    "jest": "^24.9.0",
     "nodemon": "^2.0.2"
   }
 }
