@@ -91,3 +91,5 @@ Total Time: ~ 6h 40min
 # Author
 
 Fullstack Developer Phuc Tran <glup3.tran@gmail.com>
+
+My Portfolio: https://glup3.github.io/portfolio-v2
