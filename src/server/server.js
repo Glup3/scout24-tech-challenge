@@ -6,8 +6,8 @@ import analytics from './routes/analytics';
 
 const server = express();
 
-server.use(bodyParser.json());
 server.use(cors());
+server.use(bodyParser.json());
 
 const routePrefix = '/api/v1';
 
