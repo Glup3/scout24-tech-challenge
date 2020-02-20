@@ -1,6 +1,37 @@
 # Scout24 Tech Challenge
 My solution for the Scout24 Tech Challenge
 
+# How to start
+Install Node Modules
+```
+npm install
+```
+
+Start Client (React App)
+```
+npm run start:client
+```
+
+Start Server (Express Server)
+```
+npm run start:server
+```
+
+Start Both Together
+```
+npm start
+```
+
+Test Client
+```
+npm run test:client
+```
+
+Test Server
+```
+npm run test:server
+```
+
 # Main Steps of my Solution
 
 1. Creating a React Project
