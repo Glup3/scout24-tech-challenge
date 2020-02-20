@@ -1,15 +1,20 @@
 import React, { useState } from 'react'
 import WebsiteInformation from '../WebsiteInformation/WebsiteInformation'
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const InformationContainer = () => {
   const [url, setUrl] = useState('https://webscraper.io/test-sites/e-commerce/allinone');
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
 
   const onSubmit = e => {
     e.preventDefault();
 
     setIsLoading(true);
+    setData(null);
+    setError(null);
+
     fetch('http://localhost:4000/api/v1/analytics', {
       method: 'POST',
       headers: {
@@ -18,18 +23,27 @@ const InformationContainer = () => {
       },
       body: JSON.stringify({ url: url })
     })
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) {
+        throw Error(res.statusText);
+      }
+
+      return res.json();
+    })
     .then(data => {
       setData(data);
-      console.log(data);
       
     })
     .catch(err => {
-      console.error(err);
+      setError(err);
     })
     .finally(() => {
       setIsLoading(false);
     });
+  }
+
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
 
   return (
@@ -39,7 +53,10 @@ const InformationContainer = () => {
         <button>Send</button>
       </form>
 
-      {isLoading ? <div>Loading...</div> : <WebsiteInformation data={data} />}
+      {error != null && <ErrorMessage errorMessage={error.toString()} />}
+
+      {(error == null && data != null) && <WebsiteInformation data={data} />}
+      
     </div>
   )
 }
