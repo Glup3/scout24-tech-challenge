@@ -98,6 +98,7 @@ const getInformationFromWebsite = async (html, url) => {
     h4: h4Headers,
     h5: h5Headers,
     h6: h6Headers,
+    domain: uri.origin,
     internalLinks: getAllInternalLinks($, url),
     externalLinks: getAllExternalLinks($, uri.hostname),
     title: pageTitle,

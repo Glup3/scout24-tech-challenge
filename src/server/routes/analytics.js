@@ -17,8 +17,8 @@ router.post('/', async (req, res, next) => {
       const loadingTime = resp.timings.end;
       
       const result = await getInformationFromWebsite(html, url);
-      
       result.loadingTime = loadingTime;
+      result.url = url;
       
       res.status(200).send(result);
     }
